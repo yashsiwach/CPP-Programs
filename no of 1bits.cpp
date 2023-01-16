@@ -14,5 +14,7 @@ int main(){
     z=set(a);
     y=set(b);
     cout<<y+z<<endl;
+    return 0;
+    
 
 }
