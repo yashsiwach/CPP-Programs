@@ -5,7 +5,7 @@ void sel(int a[],int size){
         int chota=i;
         for(int j=i+1;j<size;j++){
             if(a[j]<a[chota])
-            chota=j;
+            chota=j ;
 
         }swap(a[chota],a[i]);
     } 
