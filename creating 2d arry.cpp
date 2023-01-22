@@ -22,4 +22,8 @@ int main(){
 
         }cout<<endl;
     }
+    //memmory release
+    for(int i=0;i<a;i++){
+        delete []ar[i];
+    }
 }
