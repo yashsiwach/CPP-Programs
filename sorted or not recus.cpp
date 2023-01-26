@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-bool check(int *a,int size){
+bool check(int a[],int size){
     if(size==0||size==1){
         return true;
     }
