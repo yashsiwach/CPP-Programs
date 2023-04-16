@@ -174,6 +174,48 @@ void learnunorderedset()
 }
 void learnmap()
 {
+    map<int,int>mp;
+    map<int,pair<int,int>>mpp;
+
+    mp[1]=2;
+    mp.insert({2,4});
+    mp.emplace(4,6);
+    
+    mpp[1]={8,9};
+    mpp.insert({2,{4,7}});
+    mpp.emplace(8,(5,10));
+
+    for (auto i:mp)
+    {
+        cout<<i.first<<" "<<i.second<<endl;
+    }
+    cout<<mp[1];
+    cout<<mp[2];
+    //set k jase key unique hogi and sorted hogi 
+    for (auto it:mp)
+    {
+        cout<<it.first<<" "<<it.second;
+    }
+
+    auto it =mp.find(1);
+    cout<<*(it).second;
+
+    auto it =mp.find(2);
+    auto it=mp.lower_bound(2);
+    auto it=mp.upper_bound(1);
+}
+void learnmultimap(){
+    multimap<int,int>mpp;
+    //sab map h bass same ya duplicate save kr sakte h
+    //map[3]=5 is not valid mehtod
+}
+void learnunorderedmap(){
+    //same h bass accndiing ni hota
+
+}
+void argolitm(){
+    sort(a,a+n);//a is arry and n is number of arry len
+    sort(v.begin(),v.end());
     
 }
 int main()
