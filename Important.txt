@@ -1,1 +1,5 @@
 1.prev()=it is used to go back to the previous iterator prev(set.end(),2),iska mtlb h end se 2 position phale wala *it me save hojega.
+
+2.remove()=it is used to take the element to the last index,so we can dlelte the last element in vector.
+        <nums.erase(remove(nums.begin(),nums.end(),val),nums.end());>
+        isse val ko last me leja  k dlelte krdega;vector 
