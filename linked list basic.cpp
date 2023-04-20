@@ -76,6 +76,25 @@ void nodedeletehead(node*&head){
     temp->next=NULL;
     delete temp;
 }
+void nodedelete(node*&head,int a){
+    node*temp=head;
+    node*pre=NULL;
+    node*curr=NULL;
+    
+    int i=1;
+    while(i<a)
+    {
+        temp=temp->next;
+        i++;
+    }
+    pre=temp;
+    curr=pre->next;
+    pre->next=curr->next;
+    curr->next=NULL;
+    delete curr;
+
+
+}
 int main()
 {
     node*first=new node(10);
@@ -100,12 +119,9 @@ int main()
     // insertatpos(head,newnode,1);
     cout<<endl;
     print(head);
-    nodedeletehead(head);
+    nodedelete(head,1);
     cout<<endl;
     print(head);
-    insertathead(head,newnode);
-    cout<<endl;
-    print(head);
-
+   
 
 }
