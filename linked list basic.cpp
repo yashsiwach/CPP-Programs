@@ -69,6 +69,13 @@ void insertatpos(node*&head,node*newnode,int pos)
         pre->next=newnode;
     }
 }
+void nodedeletehead(node*&head){
+    node*temp=head;
+    
+    head=head->next;
+    temp->next=NULL;
+    delete temp;
+}
 int main()
 {
     node*first=new node(10);
@@ -88,10 +95,17 @@ int main()
     // cout<<endl;
     // print(head);
     // insertattail(tail,newnode);
+    // cout<<endl;
+    // print(head);
+    // insertatpos(head,newnode,1);
     cout<<endl;
     print(head);
-    insertatpos(head,newnode,1);
+    nodedeletehead(head);
     cout<<endl;
     print(head);
+    insertathead(head,newnode);
+    cout<<endl;
+    print(head);
+
 
 }
