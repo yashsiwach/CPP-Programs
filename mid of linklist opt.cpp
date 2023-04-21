@@ -8,7 +8,7 @@ class node{
     node(int data){
         this->data=data;
         this->next=NULL;
-        this->pre=NULL;
+        
     }
 };
 void print(node* head)
@@ -20,6 +20,34 @@ void print(node* head)
         temp=temp->next;
     }
 }
+int len(node* head){
+    node*temp=head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        temp=temp->next;
+    }return count;
+}
+void rev(node* head,int pos)
+{
+    node*temp=head;
+    node* pre=NULL;
+    node* forr=NULL;
+    int count=0;
+    while(count<pos)
+    {
+        forr=temp->next;
+        temp->next=pre;
+        
+        pre=temp;
+        temp=forr;
+        count++;
+
+    }
+    if(forr!=NULL){
+        head->next=rev(forr,pos);
+    }
+} 
 
 int main()
 {
@@ -32,5 +60,6 @@ int main()
     node*head=first;
     
     print(head);
+    rev()
 
 }
