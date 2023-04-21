@@ -5,4 +5,6 @@
         isse val ko last me leja  k dlelte krdega;vector 
 3.In a linked list, a=b->next means that the variable a is assigned to the node that follows b in the list. On the other hand, b->next=a means that the node pointed to by b's next pointer is assigned to a.
 
-To illustrate this, let's say we have a linked list with nodes A, B, and C in that order. If we execute a = b->next, then a will point to node C because that is the node following B. However, if we execute b->next = a, then node B's next pointer will now point to node A instead of node C.
+4.To illustrate this, let's say we have a linked list with nodes A, B, and C in that order. If we execute a = b->next, then a will point to node C because that is the node following B. However, if we execute b->next = a, then node B's next pointer will now point to node A instead of node C.
+
+5.VERY IMP KAdane Algo .
