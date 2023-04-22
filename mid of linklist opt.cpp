@@ -4,7 +4,7 @@ class node{
     public:
     int data;
     node* next=NULL;
-    node* pre=NULL;
+   
     node(int data){
         this->data=data;
         this->next=NULL;
@@ -28,25 +28,26 @@ int len(node* head){
         temp=temp->next;
     }return count;
 }
-void rev(node* head,int pos)
+node* revs(node* head,int pos)
 {
-    node*temp=head;
+    node*curr=head;
     node* pre=NULL;
-    node* forr=NULL;
+    node* forr=curr->next;
     int count=0;
-    while(count<pos)
+    while(curr!=NULL&&count<pos)
     {
-        forr=temp->next;
-        temp->next=pre;
+        forr=curr->next;
+        curr->next=pre;
         
-        pre=temp;
-        temp=forr;
+        pre=curr;
+        curr=forr;
         count++;
 
     }
-    if(forr!=NULL){
-        head->next=rev(forr,pos);
-    }
+    if(curr!=NULL && forr!=NULL){
+        head->next=revs(forr,pos);
+
+    }return pre;
 } 
 
 int main()
@@ -54,12 +55,19 @@ int main()
     node*first=new node(10);
     node*sec=new node(20);
     node*third=new node(30);
+    node*forth=new node(40);
+    node*five=new node(50);
+
+
     first->next=sec;
     sec->next=third;
-    third->next=NULL;
+    third->next=forth;
+    forth->next=five;
+    five->next=NULL;
     node*head=first;
     
     print(head);
-    rev()
+    head=revs(head,2);
+    print(head);
 
 }
