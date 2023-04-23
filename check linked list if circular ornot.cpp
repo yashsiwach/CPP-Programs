@@ -28,14 +28,26 @@ node* checkx(node*&head)
             break;
         }
     }
+    node*temp=fast;
     while(slow!=fast)
     {
+        temp=fast;
         slow=slow->next;
         fast=fast->next;
-    }return slow;
+    }
+    temp->next=NULL;
+    return slow;
 
 }
+void print(node*head)
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<" ";
+        head=head->next;
 
+    }
+}
     
 int main(){
     node*first=new node(10);
@@ -55,6 +67,7 @@ int main(){
     six->next=sev;
     sev->next=third;
     cout<<"found at"<<checkx(head)->data<<endl;
+    print(head);
     
     
 
