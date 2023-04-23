@@ -44,9 +44,25 @@ void print(node*head)
 {
     while(head!=NULL)
     {
-        cout<<head->next;
+        cout<<head->data<<" ";
         head=head->next;
     }
+}
+bool pal(node*slow,node*reverse,node*head)
+{
+    node*temp1=head;
+    node*temp2=reverse;
+    while(temp2!=NULL)
+    {
+        
+        if(temp1->data!=temp2->data)
+        {
+            return false;
+        }
+        temp1=temp1->next;
+        temp2=temp2->next;
+    }return true;
+
 }
 int main()
 {
@@ -55,17 +71,19 @@ int main()
     node* third=new node(30);
     node*forth=new node(30);
     node*five=new node(20);
-    node*six=new node(10);
+    node*six=new node(50);
     first->next=sec;
     sec->next=third;
     third->next=forth;
     forth->next=five;
     five->next=six;
     node*head=first;
-    cout<<middle(head)->data<<endl;
-    print(head);
-    head=reverse(head);
-    print(head);
+    node*slow=middle(head);
+    cout<<slow->data<<endl;
+    node* rev=reverse(slow->next);
+    print(rev);
+    bool ans=pal(slow,rev,head);
+    cout<<ans<<endl;
 
 
 }
