@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+   // reveres ki jrurt ni the extra h
    
     ListNode* rev(ListNode*head)
     {
@@ -106,6 +107,7 @@ public:
             anstail->next=newnode;
             anstail=newnode;
         }
+       //anshead banai the usma t start krdo 
         ListNode * ans=anshead;
         return ans;
     }
