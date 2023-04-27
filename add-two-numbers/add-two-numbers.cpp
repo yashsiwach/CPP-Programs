@@ -81,10 +81,11 @@ public:
             //new node n tail bna do taki next k leye tail ya ban j
             
             anstail=newnode;
-            // next kro 
+            // next kro ab +1 age kro
             rev1=rev1->next;
 
         }
+       //vahi case agr 2nd bachja or 1st jldi ktm hoja
           while(rev2!=NULL)
         {
             int sum =carry+rev2->val;
@@ -96,6 +97,7 @@ public:
             rev2=rev2->next;
 
         }
+       //agr dono ktm hoja or carry bachja
         while(carry!=0){
             int sum =carry;
             int digit=sum%10;
