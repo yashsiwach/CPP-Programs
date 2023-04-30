@@ -28,8 +28,84 @@ node* buildtree(node* root)
     root->right=buildtree(root->right);
     return root;
 }
+void levelordertreversal(node*root)
+{
+    queue<node*>jat;
+    jat.push(root);
+    jat.push(NULL);
+    while(!jat.empty())
+    {
+        node* temp=jat.front();
+       
+        jat.pop();
+        if(temp==NULL) 
+        {
+            cout<<endl;
+            if(!jat.empty())
+            {
+                jat.push(NULL);
+            }
+        }
+        else 
+        {
+             cout<<temp->data<<" ";
+                    if(temp->left)
+        {
+            jat.push(temp->left);
+        }
+        if(temp->right){
+            jat.push(temp->right);
+        }
+        }
+
+    }
+}
+void inorder(node*root)
+{
+    if(root==NULL)
+    {
+        return ;
+    }
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+void preorder(node*root)
+{
+    if(root==NULL)
+    {
+        return ;
+    }
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void postorder(node*root)
+{
+    if(root==NULL)
+    {
+        return ;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+    
+}
 int main()
 {
+    //5 4 2 -1 4 -1 -1 -1 6 -1 4 -1 -1
     node*root=NULL;
     root=buildtree(root);
+    cout<<"level starts"<<endl;
+    levelordertreversal(root);
+    cout<<endl;
+    cout<<"inorder "<<endl;
+    inorder(root);
+    cout<<endl;
+    cout<<"preorder "<<endl;
+    
+    preorder(root);
+    cout<<endl;
+    cout<<"postorder "<<endl;
+    postorder(root);
 }
