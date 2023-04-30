@@ -1,28 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
-void solve(stack<int>&jat,int target)
+// void solve(stack<int>&jat,int target)
+// {
+//     if(jat.empty())
+//     {
+//         jat.push(target);
+//         return;
+//     }
+//     int temp=jat.top();
+//     jat.pop();
+//     solve(jat,target);
+//     jat.push(temp);
+// }
+// void iatb(stack<int>&jat)
+// {
+//     if(jat.empty())
+//     {
+//         cout<<"stack is empty"<<endl;
+//         return ;
+//     }
+//     int target=jat.top();
+//     jat.pop();
+//     solve(jat,target);
+  
+// }
+void insertat(stack<int>&jat,int target)
 {
     if(jat.empty())
     {
         jat.push(target);
-        return;
+        return    ;
     }
     int temp=jat.top();
     jat.pop();
-    solve(jat,target);
+    insertat(jat,target);
     jat.push(temp);
-}
-void iatb(stack<int>&jat)
-{
-    if(jat.empty())
-    {
-        cout<<"stack is empty"<<endl;
-        return ;
-    }
-    int target=jat.top();
-    jat.pop();
-    solve(jat,target);
-  
+
 }
 int main()
 {
@@ -32,7 +45,10 @@ int main()
     jat.push(30);
     jat.push(40);
     jat.push(50);
-    iatb(jat);
+    int target=jat.top();
+    jat.pop();
+    insertat(jat,target);
+    cout<<"done"<<" ";
     while(!jat.empty())
     {
         cout<<jat.top()<<" ";
