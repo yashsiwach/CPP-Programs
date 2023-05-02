@@ -9,9 +9,7 @@ public:
         int len2=salary.size();
         for(auto i:salary)
         {
-                sum=sum+i;
-
-                
+                sum=sum+i; 
         }
         cout<<sum<<" "<<len2<<endl;
         double ans=sum/len2;
