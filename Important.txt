@@ -8,3 +8,11 @@
 4.To illustrate this, let's say we have a linked list with nodes A, B, and C in that order. If we execute a = b->next, then a will point to node C because that is the node following B. However, if we execute b->next = a, then node B's next pointer will now point to node A instead of node C.
 
 5.VERY IMP KAdane Algo .
+6.for(auto it:m1)
+        {
+            if(m2[it.first] != it.second)
+            {
+                return false;
+            }
+        }return true;
+for comparing 2 maps ;
