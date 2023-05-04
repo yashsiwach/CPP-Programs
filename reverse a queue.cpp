@@ -1,16 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-void rev(queue<int>&q)
-{
+// void rev(queue<int>&q)
+// {
     
-    if(q.empty())
+//     if(q.empty())
+//     {
+//         return ;
+//     }
+//     int temp=q.front();
+//     q.pop();
+//     rev(q);
+//     q.push(temp);
+// }
+void usingstack(queue<int>&q)
+{
+    stack<int>s;
+    while(!q.empty())
     {
-        return ;
+        int temp=q.front();
+        q.pop();
+        s.push(temp);
     }
-    int temp=q.front();
-    q.pop();
-    rev(q);
-    q.push(temp);
+    while(!s.empty())
+    {
+        int temp=s.top();
+        s.pop();
+        q.push(temp);
+    }
 }
 int main()
 {
@@ -21,7 +37,8 @@ int main()
     q.push(6);
     q.push(8);
    
-    rev(q);
+    //rev(q);
+    usingstack(q);
     while(!q.empty())
     {
         cout<<q.front()<<endl;
