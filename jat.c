@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Structure for storing medicine details
+// structure for storing medicine details
 struct med {
     int id;
     char name[50];
@@ -10,7 +10,7 @@ struct med {
     int qty;
 };
 
-// Function prototypes
+// function prototypes
 void display_meds(struct med[], int);
 void add_med(struct med[], int*);
 void delete_med(struct med[], int*);
@@ -20,19 +20,19 @@ void save_meds(struct med[], int);
 int load_meds(struct med[]);
 
 int main() {
-    struct med db[100];  // Maximum 100 medicines can be stored
+    struct med db[100];  // maximum 100 medicines can be stored
     int n = load_meds(db);
 
     int opt;
     do {
-        printf("========= Med Record Management System =========\n");
-        printf("1. Display Med details\n");
-        printf("2. Add new med\n");
-        printf("3. Delete med details\n");
-        printf("4. Search a particular med\n");
-        printf("5. Update med details\n");
-        printf("6. Exit\n");
-        printf("Enter option: ");
+        printf("project on c by roll number 70,69,68\n");
+        printf("1 for display med details\n");
+        printf("2 for add new med\n");
+        printf("3. delete med details\n");
+        printf("4. search a particular med\n");
+        printf("5. update med details\n");
+        printf("6. exit\n");
+        printf("enter option: ");
         scanf("%d", &opt);
 
         switch (opt) {
@@ -53,148 +53,166 @@ int main() {
                 break;
             case 6:
                 save_meds(db, n);
-                printf("Exiting program...\n");
+                printf("exiting program...\n");
                 break;
             default:
-                printf("Invalid option. Please try again.\n");
+                printf("invalid option. please try again.\n");
         }
     } while (opt != 6);
 
     return 0;
 }
 
-// Function to display the details of all medicines in the database
+// function to display the details of all medicines in the database
 void display_meds(struct med db[], int n) {
     if (n == 0) {
-        printf("No meds in the database.\n");
+        printf("no meds in the database.\n");
     } else {
-        printf("Med details:\n");
-        printf("ID\tName\tPrice\tQty\n");
+        printf("med details:\n");
+        printf("id\tname\tprice\tqty\n");
         for (int i = 0; i < n; i++) {
             printf("%d\t%s\t%.2f\t%d\n", db[i].id, db[i].name, db[i].price, db[i].qty);
         }
     }
 }
 
-// Function to add a new medicine to the database
+// function to add a new medicine to the database
 void add_med(struct med db[], int* n) {
     if (*n == 100) {
-        printf("Database is full. No more meds can be added.\n");
+        printf("database is full. no more meds can be added.\n");
     } else {
-        printf("Enter details of new med:\n");
-        printf("ID: ");
+        printf("enter details of new med:\n");
+        printf("id: ");
         scanf("%d", &db[*n].id);
-        printf("Name: ");
+        printf("name: ");
         scanf("%s", db[*n].name);
-        printf("Price: ");
+        printf("price: ");
         scanf("%f", &db[*n].price);
-        printf("Qty: ");
+        printf("quantity: ");
         scanf("%d", &db[*n].qty);
         (*n)++;
-        printf("Med added successfully.\n");
+        printf("med added successfully.\n");
     }
 }
 
-// Function to delete a medicine from the database
+// function to delete a medicine from the database
 void delete_med(struct med db[], int* n) {
     int id;
-    printf("Enter ID of med to be deleted: ");
+    printf("enter id of med to be deleted: ");
     scanf("%d", &id);
-
-    int found = 0;
-    for (int i = 0; i < *n; i++) {
+    int i;
+    for (i = 0; i < *n; i++) {
         if (db[i].id == id) {
-            found = 1;
-            // Shift all elements after the deleted med one position to the left
-            for (int j = i; j < *n - 1; j++) {
-                db[j] = db[j+1];
-            }
-            (*n)--;
-            printf("Med deleted successfully.\n");
             break;
         }
     }
-
-    if (!found) {
-        printf("Med not found.\n");
+    if (i == *n) {
+        printf("med not found.\n");
+    } else {
+        // shift all elements to the left
+        for (int j = i; j < *n - 1; j++) {
+            db[j] = db[j+1];
+        }
+        (*n)--;
+        printf("med deleted successfully.\n");
     }
 }
 
-// Function to search for a medicine in the database
+// function to search for a medicine by name or id
 void search_med(struct med db[], int n) {
-    int id;
-    printf("Enter ID of med to search for: ");
-    scanf("%d", &id);
-
-    int found = 0;
-    for (int i = 0; i < n; i++) {
-        if (db[i].id == id) {
-            found = 1;
-            printf("Med details:\n");
-            printf("ID\tName\tPrice\tQty\n");
-            printf("%d\t%s\t%.2f\t%d\n", db[i].id, db[i].name, db[i].price, db[i].qty);
-            break;
+    int opt;
+    printf("search by:\n");
+    printf("1. name\n");
+    printf("2. id\n");
+    printf("enter option: ");
+    scanf("%d", &opt);
+    if (opt == 1) {
+        char name[50];
+        printf("enter name of med: ");
+        scanf("%s", name);
+        int found = 0;
+        for (int i = 0; i < n; i++) {
+            if (strcmp(db[i].name, name) == 0) {
+                printf("id\tname\tprice\tqty\n");
+                printf("%d\t%s\t%.2f\t%d\n", db[i].id, db[i].name, db[i].price, db[i].qty);
+                found = 1;
+                break;
+            }
         }
-    }
-
-    if (!found) {
-        printf("Med not found.\n");
+        if (!found) {
+            printf("med not found.\n");
+        }
+    } else if (opt == 2) {
+        int id;
+        printf("enter id of med: ");
+        scanf("%d", &id);
+        int found = 0;
+        for (int i = 0; i < n; i++) {
+            if (db[i].id == id) {
+                printf("id\tname\tprice\tqty\n");
+                printf("%d\t%s\t%.2f\t%d\n", db[i].id, db[i].name, db[i].price, db[i].qty);
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            printf("med not found.\n");
+        }
+    } else {
+        printf("invalid option.\n");
     }
 }
 
-// Function to update the details of a medicine in the database
+// function to update the details of a medicine
 void update_med(struct med db[], int n) {
     int id;
-    printf("Enter ID of med to update: ");
+    printf("enter id of med to be updated: ");
     scanf("%d", &id);
-
     int found = 0;
     for (int i = 0; i < n; i++) {
         if (db[i].id == id) {
-            found = 1;
-            printf("Enter new details of med:\n");
-            printf("Name: ");
+            printf("enter new details of med:\n");
+            printf("name: ");
             scanf("%s", db[i].name);
-            printf("Price: ");
+            printf("price: ");
             scanf("%f", &db[i].price);
-            printf("Qty: ");
+            printf("quantity: ");
             scanf("%d", &db[i].qty);
-            printf("Med details updated successfully.\n");
+            printf("med updated successfully.\n");
+            found = 1;
             break;
         }
     }
-
     if (!found) {
-        printf("Med not found.\n");
+        printf("med not found.\n");
     }
 }
 
-// Function to save the database to a file
+// function to save the details of all medicines in a file
 void save_meds(struct med db[], int n) {
-    FILE* fp;
-    fp = fopen("meds.dat", "wb");
+    FILE* fp = fopen("meds.dat", "wb");
     if (fp == NULL) {
-        printf("Error opening file.\n");
-        return;
+        printf("error opening file.\n");
+    } else {
+        fwrite(&n, sizeof(int), 1, fp);
+        fwrite(db, sizeof(struct med), n, fp);
+        fclose(fp);
+        printf("med details saved to file successfully.\n");
     }
-    fwrite(db, sizeof(struct med), n, fp);
-    fclose(fp);
-    printf("Database saved successfully.\n");
 }
 
-// Function to load the database from a file
+// function to load the details of all medicines from a file
 int load_meds(struct med db[]) {
-    FILE* fp;
-    fp = fopen("meds.dat", "rb");
+    FILE* fp = fopen("meds.dat", "rb");
     if (fp == NULL) {
-        printf("Error opening file.\n");
+        // no file exists yet, so return 0
         return 0;
+    } else {
+        int n;
+        fread(&n, sizeof(int), 1, fp);
+        fread(db, sizeof(struct med), n, fp);
+        fclose(fp);
+        printf("med details loaded from file successfully.\n");
+        return n;
     }
-    int n = 0;
-    while (fread(&db[n], sizeof(struct med), 1, fp) == 1) {
-        n++;
-    }
-    fclose(fp);
-    printf("Database loaded successfully.\n");
-    return n;
 }
