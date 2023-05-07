@@ -28,10 +28,10 @@ int main() {
         printf("project on c by roll number 70,69,68\n");
         printf("1 for display med details\n");
         printf("2 for add new med\n");
-        printf("3. delete med details\n");
-        printf("4. search a particular med\n");
-        printf("5. update med details\n");
-        printf("6. exit\n");
+        printf("3 for delete med details\n");
+        printf("4 for search a particular med\n");
+        printf("5 for update med details\n");
+        printf("6 for exit\n");
         printf("enter option: ");
         scanf("%d", &opt);
 
@@ -53,7 +53,7 @@ int main() {
                 break;
             case 6:
                 save_meds(db, n);
-                printf("exiting program...\n");
+                printf("exit done\n");
                 break;
             default:
                 printf("invalid option. please try again.\n");

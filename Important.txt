@@ -21,4 +21,7 @@ for comparing 2 maps ;
 9.Return the value in the  mod :-
 int mod=1e9+7;
 int ans=0;
-return ans%mod;6
+return ans%mod;
+10->koi ek word select kro then ctrl d se same word select hojege and change at once.
+11->select kro and ctrl +shift+d se same text niche copy hojega without ctrl c and ctrl v.
+12->multiple codelines ko select kro shift +down arrow.
