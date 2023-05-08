@@ -11,13 +11,7 @@
  */
 class Solution {
 public:
-    int suum(TreeNode* root)
-{
-    if(root==NULL) return 0;
-    int left=suum(root->left);
-    int right=suum(root->right);
-    return left + right + root->val;
-}
+    
 
     bool hasPathSum(TreeNode* root, int targetSum) {
     if(root == NULL) return false;
