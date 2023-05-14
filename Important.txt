@@ -37,4 +37,7 @@ return ans%mod;
     // Copy two characters of s1 (starting
     // from position 3)
     string r = s1.substr(3, 2);
- 
+
+24->
+  
+ 🔥C++ ✅ Best & Shortest [LINES ]Solution ( 🔥 Beats 100%🔥 ) Easy to Understand💯💯 ⬆⬆⬆  
