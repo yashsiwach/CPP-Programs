@@ -40,4 +40,4 @@ return ans%mod;
 
 24->
   
- 🔥C++ ✅ Best & Shortest [LINES ]Solution ( 🔥 Beats 100%🔥 ) Easy to Understand💯💯 ⬆⬆⬆  
+🔥C++ ✅ Best & Shortest [ 6-LINES ]Solution ( 🔥 Beats 100%🔥 ) Easy to Understand💯 ⬆ 
