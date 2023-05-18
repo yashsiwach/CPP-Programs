@@ -4,7 +4,6 @@ using namespace std;
 int area(int v){
     float pi=3.14;
     return pi*pow(v,2);
-
 }
 int main(){
     int a;
