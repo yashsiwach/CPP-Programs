@@ -27,6 +27,7 @@ node* buildtree(node*root)
         root->right=buildtree(root->right);
         return root;
     }
+    //s
 }
 void topview(node*root)
 {
