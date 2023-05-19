@@ -15,5 +15,4 @@ int main(){
         cin>>ar[i];
     }
     sum(ar,a);
-
 }
