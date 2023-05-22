@@ -1,18 +1,26 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+
 using namespace std;
-void sum(int *ar,int &a){
-    int sum=0;
-    for (int i=0;i<a;i++){
-        sum+=ar[i];
+
+int get_punishment_number(int n) {
+    int punishment = 0;
+    for (int i = 1; i <= n; i++) {
+        string digits = to_string(i*i);
+        int sum = 0;
+        for (char digit : digits) {
+            sum += digit - '0';
+        }
+        if (sum == i) {
+            punishment += i*i;
+        }
     }
-    cout<<sum;
+    return punishment;
 }
-int main(){
-    int a;
-    cin>>a;
-    int *ar=new int [a];
-    for (int i=0;i<a;i++){
-        cin>>ar[i];
-    }
-    sum(ar,a);
+
+int main() {
+    int n = 10;
+    int punishment_number = get_punishment_number(n);
+    cout << "The punishment number of " << n << " is " << punishment_number << endl;
+    return 0;
 }

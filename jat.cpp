@@ -1,9 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    string a;
-    cin>>a;
-    cout<<a<<endl;
+    int a[3]={0};
+    for(auto it:a)
+    {
+        cout<<it;
+    }
 }
 
 //
