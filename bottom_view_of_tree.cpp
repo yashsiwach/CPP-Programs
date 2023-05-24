@@ -28,7 +28,7 @@ node* buildtree(node*root)
         return root;
     }
 }
-void topview(node*root)
+void bottomview(node*root)
 {
     if(root==NULL) return ;
     map<int ,int>topnode;
@@ -43,10 +43,9 @@ void topview(node*root)
         node*frontnode=temp.first;
         int hd=temp.second;
         
-        if(topnode.find(hd)==topnode.end())
-        {
-            topnode[hd]=frontnode->val;
-        }
+        
+        topnode[hd]=frontnode->val;
+        
         if(frontnode->left)
         {
             q.push(make_pair(frontnode->left,hd-1));
@@ -64,6 +63,8 @@ void topview(node*root)
 int main()
 {
     node*root=buildtree(root);
-    topview(root);
+    bottomview(root);
 
 }
+//10 20 30 -1 -1 40 60 -1 -1 -1 80 50 -1 70 -1 -1 90 -1 -1
+//input
