@@ -40,8 +40,8 @@ void rightprint(node*root,vector<int>&ans,int level)
     }
     rightprint(root->right,ans,level+1);
     rightprint(root->left,ans,level+1);
-}
-int main()
+
+}int main()
 {
     node*root=buildtree(root);
     vector<int>ans;
