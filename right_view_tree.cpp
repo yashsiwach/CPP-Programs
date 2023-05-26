@@ -44,7 +44,7 @@ void rightprint(node*root,vector<int>&ans,int level)
 }int main()
 {
     node*root=buildtree(root);
-    vector<int>ans;
+    vector<int>ans; 
     
     rightprint(root,ans,0);
     for(auto it:ans)
