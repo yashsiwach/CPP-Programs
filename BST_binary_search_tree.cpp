@@ -29,7 +29,35 @@ node* insertbst(node* root, int val)
     
     return root;
 }
+void postorder(node*root)
+{
+	if(root==nullptr)
+		return;
+	postorder(root->left);
+	postorder(root->right);
+	
+	cout<<root->val<<" ";
+	cout<<endl;
+}
 
+void preorder(node*root)
+{
+	if(root==nullptr)
+		return;
+	cout<<root->val<<" ";
+	cout<<endl;
+	preorder(root->left);
+	preorder(root->right);
+}
+void inorder(node*root)
+{
+	if(root==nullptr)
+		return;
+	inorder(root->left);
+	cout<<root->val<<" " ;
+	cout<<endl;
+	inorder(root->right);
+}
 
 void levelordertreversal(node*root)
 {
@@ -75,4 +103,10 @@ int main()
 	takeinput(root);
 	cout<<"Print tree"<<endl;
 	levelordertreversal(root);
+	cout<<"preoder" <<endl;
+	preorder(root);
+	cout<<"post"<<endl;
+	postorder(root);
+	cout<<"inorder"<<endl;
+	inorder(root);
 }
