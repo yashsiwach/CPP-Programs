@@ -12,23 +12,19 @@ public:
 		this->right=NULL;
 	}
 };
-
-node* bstbuild(node*root,int val)
+node* bstbuild(node*&root,int val)
 {
 	if(root==NULL)
 	{
 		root=new node(val);
 		return root;
-	}	
-	if(root->val>val)
-	{
-		root->left=bstbuild(root->left,val);
 	}
+	if(root->val>val)
+		root->left=bstbuild(root->left,val);
 	else
 		root->right=bstbuild(root->right,val);
 	return root;
 }
-
 void takeinput(node*&root)
 {
 	int val;
@@ -39,28 +35,31 @@ void takeinput(node*&root)
 		cin>>val;
 	}
 }
-bool searching(node*root,int val)
+int minvalue(node*root)
 {
-	if(root==NULL)
-		return false;
-	if(root->val==val)
-		return true;
-	if(root->val>val)
-	{
-		return searching(root->left,val);
+	node*temp=root;
+	if(temp==NULL)
+	{ 
+		return -1;
 	}
-	else
-		return searching(root->right,val);
-	
-		
+	while(temp->left!=NULL)
+		temp=temp->left;
+	return temp->val;
+}
+int maz(node*root)
+{
+	node*temp=root;
+	if(temp==NULL)
+		return -1;
+	while(temp->right)
+		temp=temp->right;
+	return temp->val;
 }
 int main()
 {
 	node*root=NULL;
 	takeinput(root);
-	
-	int a;
-	cin>>a;
-	bool ans=searching(root,a);
-	cout<<ans;
+	int z=minvalue(root);
+	int y=maz(root);
+	cout<<z<<" "<<y<<" "<<endl;
 }
