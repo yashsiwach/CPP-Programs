@@ -41,5 +41,8 @@ return ans%mod;
 24-> used to remove unique elements form the vector;
 ans.erase(unique(ans.begin(), ans.end()), ans.end()); 
 
+25-> priority_queue<int ,vector<int>,greater<int>>pq; min heap leye
+
+
   
 C++ Best & Shortest -><- LINES Solution 🔥Beats 100%🔥Well Explained 
