@@ -43,6 +43,9 @@ ans.erase(unique(ans.begin(), ans.end()), ans.end());
 
 25-> priority_queue<int ,vector<int>,greater<int>>pq; min heap leye
 
-
+26->auto it=ans.begin();
+        advance(it,k-1);
+        return *it;
+        //advance function is used to shift the iterator in the set 
   
 C++ Best & Shortest -><- LINES Solution 🔥Beats 100%🔥Well Explained 
