@@ -24,3 +24,4 @@ int main() {
     cout << "The punishment number of " << n << " is " << punishment_number << endl;
     return 0;
 }
+//tes
