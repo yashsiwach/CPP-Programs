@@ -1,31 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-int pivotIndex(vector<int>& nums) {
-        int sum1=0 ,sum2=0;
-        int len=nums.size();
-        for(int i=0;i<len;i++){
-            for(auto j=nums.begin();j!=nums.begin()+i;j++)
-            {
-                sum1+=*(j);
-                cout<<"this the sum1:"<<sum1<<endl;
-                
-            }
-            for(auto k=nums.begin()+i+1;k!=nums.end();k++)
-            {
-                sum2+=*(k);
-                cout<<"this the sum2:"<<sum2<<endl;
-            }
+class Solution {
+public:
+    void sub(vector<int>&rods,vector<int>out,int i,vector<vector<int>>store)
+    {
+        if(i==rods.size()-1)
+        {
+            store.push_back(out);
             
-            if(sum1==sum2) return i;
-            cout<<sum1<<"  " <<sum2<<" ";
-            cout<<"checked"<<endl;
-            sum1=0;
-            sum2=0;
-            
-        }return -1;
+            return;
+        }
+        sub(rods,out,i+1,store);
+        out.push_back(rods[i]);
+        sub(rods,out,i+1,store);
     }
-int main(){
-    vector<int>jat={1,7,3,6,5,6};
-    int ans=pivotIndex(jat);
-    cout<<ans<<endl;
-}
+    int tallestBillboard(vector<int>& rods) {
+        vector<int>out;
+        int i=0;
+        vector<vector<int>>store;
+        sub(rods,out,i,store);
+        for(auto it:store)
+        {
+            for(auto i:it) cout<<i<<endl;
+        }
+        return 0;
+
+        
+    }
+};
