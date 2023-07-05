@@ -48,4 +48,13 @@ ans.erase(unique(ans.begin(), ans.end()), ans.end());
         return *it;
         //advance function is used to shift the iterator in the set 
   
-C++ Best & Shortest -><- LINES Solution 🔥Beats 100%🔥Well Explained 
+27-> to convert array to vector = vector.assign(arry,arry+size);
+
+28->to find intersetion of 2 array :-      set_intersection(A, A + n1, B, B + n2, back_inserter(jat));
+ and for 3 arrays :-
+    vector<int> jat;
+    vector<int> temp;
+
+    set_intersection(A, A + n1, B, B + n2, back_inserter(jat));
+    set_intersection(jat.begin(), jat.end(), C, C + n3, back_inserter(temp));
+    //arry alag alag dalna padega varna error aayegi like jat and temp ;
