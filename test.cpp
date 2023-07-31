@@ -1,11 +1,22 @@
-#include <iostream>
-#include <bitset>
-#include <string>
+#include<bits/stdc++.h>
+using namespace std;
+#define deb(x) cout<<x<< " "<<endl;
+#define ll long long int
+#define yes cout<<"** YES **"<<endl;
+#define no cout<<"** NO **"<<endl;
+#define mod 10000000007
+#define PI 3.14159265358979323846
+#define fo(i,n) for(int i=0;i<n;i++)
 
-int main() {
-    std::string binary_string = "1010"; // binary string to convert to integer
-    std::bitset<8> bits(binary_string); // convert the binary string to a bitset of size 8 bits
-    int num = bits.to_ulong(); // convert the bitset to an integer
-    std::cout << num << std::endl; // print the integer value
-    return 0;
+
+
+int main()
+{
+    std::ios::sync_with_stdio();
+    cin.tie(0); cout.tie(0);
+
+    int x;
+    cin>>x; 
+
+    cout<<x<<endl;
 }

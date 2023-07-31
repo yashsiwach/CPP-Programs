@@ -58,3 +58,6 @@ ans.erase(unique(ans.begin(), ans.end()), ans.end());
     set_intersection(A, A + n1, B, B + n2, back_inserter(jat));
     set_intersection(jat.begin(), jat.end(), C, C + n3, back_inserter(temp));
     //arry alag alag dalna padega varna error aayegi like jat and temp ;
+
+29-> memset is used to inisilise the arry without for loop only values are 0,-1 but in case of Char arry you can assign any char value 
+ : memeset(arryname,(0,-1),sizeof(arryname));
