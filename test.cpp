@@ -15,7 +15,7 @@ int main()
     std::ios::sync_with_stdio();
     cin.tie(0); cout.tie(0);
 
-    int x;
+    int x; 
     cin>>x; 
 
     cout<<x<<endl;
