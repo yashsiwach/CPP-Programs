@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/177/problem/D2
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -10,10 +11,14 @@ typedef long long ll;
 #define set_bits __builtin_popcountll
 #define all(x) (x).begin(), (x).end()
 #define debug(x) cerr<<x<<" ";
+#define print(a)       for(auto x : a) cout << x << " "; cout << endl
 
 
 int main()
 {
+    
+
+  
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     ll n, m, c;
@@ -28,20 +33,22 @@ int main()
     {
         cin >> key[i];
     }
-    ll steps = (n - m) + 1;
-    ll i = 0;
+ 
 
-    while (steps--)
-    {
-        vector<ll> temp = v; 
-        for (ll k = i; k < i + m; k++)
-        {
-            temp[k] = (v[k] + key[k - i]) % c; 
-        }
-        v = temp; 
-        i++;
+    int l = 0;
+    int r = n-m;
+    vector<long long> diffarr(n+1,0);
+    for(int i=0;i<m;i++){
+        diffarr[l]+=key[i];
+        diffarr[r+1]-=key[i];
+        l++;r++;
     }
-    for (auto i : v)
-        cout << i << " ";
-    cout << endl;
+    for(ll i =1;i<=n;i++){
+        diffarr[i]+=diffarr[i-1];
+    }
+    for(int i=0;i<n;i++){
+        cout<<(v[i]+diffarr[i])%c<<" ";
+    }
 }
+    
+   
