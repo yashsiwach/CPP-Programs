@@ -10,16 +10,31 @@ typedef long long ll;
 #define set_bits __builtin_popcountll
 #define all(x) (x).begin(), (x).end()
 #define debug(x) cerr<<x<<" ";
+#define to_binary(x) bitset<32> binary(x);
 
+void solve(string &s, int i, string output)
+{
+    if (i == s.length())
+    {
+        cout << output << endl;
+        return;
+    }
+    solve(s, i + 1, output + s[i]);
+    solve(s, i + 1, output);
+}
 
 int main()
 {
+    // freopen("Input.txt","r",stdin);
+    // freopen("output.txt","w",stdout);
+    // freopen("Error.txt","w",stderr);
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int n;
-    cin>>n;
-    int m;
-    cin>>m;
-    cout<<__gcd(n,m);
-}
+    cin.tie(nullptr);
 
+    string s;
+    string temp="";
+    cin>>s;
+    cout<<s;
+    solve(s,0,temp);
+
+}
