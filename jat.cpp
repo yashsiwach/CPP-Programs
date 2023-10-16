@@ -9,32 +9,60 @@ typedef long long ll;
 #define PI 3.141592653589793238462
 #define set_bits __builtin_popcountll
 #define all(x) (x).begin(), (x).end()
-#define debug(x) cerr<<x<<" ";
-#define to_binary(x) bitset<32> binary(x);
+#define debug(x) cerr << x << " ";
 
-void solve(string &s, int i, string output)
-{
-    if (i == s.length())
-    {
-        cout << output << endl;
-        return;
-    }
-    solve(s, i + 1, output + s[i]);
-    solve(s, i + 1, output);
-}
-
-int main()
-{
-    // freopen("Input.txt","r",stdin);
-    // freopen("output.txt","w",stdout);
-    // freopen("Error.txt","w",stderr);
+int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(NULL);
+    ll n, m;
+    cin >> n >> m;
+    vector<ll> v1;
+    vector<ll> v2;
 
-    string s;
-    string temp="";
-    cin>>s;
-    cout<<s;
-    solve(s,0,temp);
+    for (ll i = 0; i < n; i++) {
+        ll temp;
+        cin >> temp;
+        v1.push_back(temp);
+    }
 
+    for (ll i = 0; i < m; i++) {
+        ll temp;
+        cin >> temp;
+        v2.push_back(temp);
+    }
+
+    ll i = 0, j = 0;
+    vector<ll> ans;
+
+    ll count = 0;
+    while (i < n && j < m) {
+        if (v1[i] < v2[j]) {
+            i++;
+            count++;
+        } else if (v1[i] > v2[j]) {
+            j++;
+            ans.pb(count);
+        } else {
+           
+            j++;
+            ans.pb(count);
+           
+        }
+    }
+
+    while (j < m) {
+        ans.pb(count);
+        j++;
+    }
+
+    while (i < n) {
+        i++;
+        count++;
+    }
+
+    for (auto val : ans) {
+        cout << val << " ";
+    }
+
+    return 0;
 }

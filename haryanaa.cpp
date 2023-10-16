@@ -1,4 +1,3 @@
-//https://codeforces.com/contest/177/problem/D2
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -10,45 +9,48 @@ typedef long long ll;
 #define PI 3.141592653589793238462
 #define set_bits __builtin_popcountll
 #define all(x) (x).begin(), (x).end()
-#define debug(x) cerr<<x<<" ";
-#define print(a)       for(auto x : a) cout << x << " "; cout << endl
+#define debug(x) cerr << x << " ";
 
+bool isprime(int n) {
+    if (n <= 1)
+        return false;
+    for (int i = 2; i * i <= n; i++) {  // Use i * i instead of i < n/2
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
 
-int main()
-{
-    
-
-  
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll n, m, c;
-    cin >> n >> m >> c;
-    vector<ll> v(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> v[i];
+    int n;
+    cin >> n;
+    vector<int> v;
+    for (int i = 0; i < n; i++) {
+        int temp;
+        cin >> temp;
+        v.push_back(temp);
     }
-    vector<ll> key(m);
-    for (ll i = 0; i < m; i++)
-    {
-        cin >> key[i];
+    int count = 0;
+    vector<int> p;
+    map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        if (isprime(v[i])) {
+            p.pb(i);
+        }
     }
- 
-
-    int l = 0;
-    int r = n-m;
-    vector<long long> diffarr(n+1,0);
-    for(int i=0;i<m;i++){
-        diffarr[l]+=key[i];
-        diffarr[r+1]-=key[i];
-        l++;r++;
+    for (int i = 0; i < p.size() - 1; i++) {
+        count = 0;
+        for (int j = p[i]; j < p[i + 1]; j++) {
+            if (v[j] < 0) {
+                count++;
+            }
+        }
+        if (count != 0)
+            mp[count] = p[i + 1] - p[i] - 1;
     }
-    for(ll i =1;i<=n;i++){
-        diffarr[i]+=diffarr[i-1];
-    }
-    for(int i=0;i<n;i++){
-        cout<<(v[i]+diffarr[i])%c<<" ";
+    for (auto i : mp) {
+        cout << i.first << " " << i.second << endl;
     }
 }
-    
-   
