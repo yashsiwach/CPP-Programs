@@ -1,38 +1,41 @@
-/*-----------------------------AIR-1-----------------------------------------*/
 #include <bits/stdc++.h>
 using namespace std;
-
-/*----------------------------------------------------------------------------*/
 typedef long long ll;
-typedef vector<int> vi;
 
-/*----------------------------------------------------------------------------*/
-#define MOD 1e9 + 7
-#define pb push_back
-#define ppb pop_back
-#define f first
-#define s second
-#define nl "\n"
-#define pie 3.141592653589793238462
-#define set_bits(x) __builtin_popcountll(x)
-#define all(x) (x).begin(), (x).end()
-#define debug(x) cerr<<x<<" "
-#define loop(i,a,b) for(int i=(a);i<(b);i++)
-#define printvector(x) for(auto i:(x)) cout<<(i)<<" "
+const int MOD = 1000000007;
 
-/*----------------------------------------------------------------------------*/
-template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
-template<typename T> T binpow(T base,T power){ ll ans=1; while(power){if(power&1) ans=ans*base; base=base*base; power>>=1;}return ans;}
-
-
-/*----------------------------------------------------------------------------*/
-int main()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout<<binpow(2,3)<<nl;
-
-    
-    
+ll binpow(ll base, ll power, ll mod) {
+    ll ans = 1;
+    base = base % mod; // Ensure the base is within [0, mod)
+    while (power > 0) {
+        if (power & 1) {
+            ans = (ans * base) % mod;
+        }
+        base = (base * base) % mod;
+        power >>= 1;
+    }
+    return ans;
 }
 
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    vector<ll> v(1000001, 1);
+    for (int i = 1; i < 1000001; i++) {
+        v[i] = (v[i - 1] * i) % MOD;
+    }
+    string s;
+    cin >> s;
+    int ans = 1;
+    map<char, int> mp;
+    for (auto it : s) {
+        mp[it]++;
+    }
+    for (auto it : mp) {
+        if (it.second > 1) {
+            ans = (ans * binpow(v[it.second], MOD - 2, MOD)) % MOD;
+        }
+    }
+    int final = (ans * v[s.size()]) % MOD;
+    cout << final << endl;
+}

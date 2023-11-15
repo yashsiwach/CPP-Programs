@@ -1,68 +1,66 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-#define MOD 1000000007
+typedef vector<int> vi;
+const ll MOD = 1000000007;
 #define pb push_back
 #define ppb pop_back
 #define ff first
 #define ss second
-#define PI 3.141592653589793238462
-#define set_bits __builtin_popcountll
+#define nl "\n"
+#define pie 3.141592653589793238462
+#define set_bits(x) __builtin_popcountll(x)
 #define all(x) (x).begin(), (x).end()
-#define debug(x) cerr << x << " ";
-
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    ll n, m;
-    cin >> n >> m;
-    vector<ll> v1;
-    vector<ll> v2;
-
-    for (ll i = 0; i < n; i++) {
-        ll temp;
-        cin >> temp;
-        v1.push_back(temp);
+#define debug(x) cerr<<#x<<" "<<x<<endl;
+#define loop(i,a,b) for(int i=(a);i<(b);i++)
+#define print(x) for(auto it:(x)) cout<<(it)<<" "; cout<<endl;
+#define showadj for (auto it : adj) { cout << it.ff << " ->"; for (auto i : it.ss) cout << i << " "; cout << endl; }
+template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
+template<typename T> T binpow(T base,T power,T mod){ ll ans=1;  base = base % mod;while(power){if(power&1) ans=(ans*base)%mod; base=((base*base)%mod); power>>=1;}return ans;}
+void bfs(int node,unordered_map<int,bool>&visi,unordered_map<int,vector<int>>&adj)
+{
+    queue<int>q;
+    visi[node]=true;
+    q.push(node);
+    while(!q.empty())
+    {
+      int fr=q.front();
+      q.pop();
+      cout<<fr<<" ";
+      for(auto nbr:adj[fr])
+      {
+        if(!visi[nbr])
+        {
+          q.push(nbr);
+          visi[nbr]=true;
+        }
+      }
     }
+    
+}
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    unordered_map<int,vector<int>>adj;
+    unordered_map<int,bool>visi;
 
-    for (ll i = 0; i < m; i++) {
-        ll temp;
-        cin >> temp;
-        v2.push_back(temp);
+    int n,m;
+    cin>>n>>m;
+    cout<<n<<m;
+    loop(i,0,m)
+    {
+        int u,v;
+        cin>>u>>v;
+        adj[u].pb(v);
+        adj[v].pb(u);
     }
-
-    ll i = 0, j = 0;
-    vector<ll> ans;
-
-    ll count = 0;
-    while (i < n && j < m) {
-        if (v1[i] < v2[j]) {
-            i++;
-            count++;
-        } else if (v1[i] > v2[j]) {
-            j++;
-            ans.pb(count);
-        } else {
-           
-            j++;
-            ans.pb(count);
-           
+    for(int i=0;i<n-1;i++)
+    {
+        if(!visi[i])
+        {
+            bfs(i,visi,adj);
         }
     }
-
-    while (j < m) {
-        ans.pb(count);
-        j++;
-    }
-
-    while (i < n) {
-        i++;
-        count++;
-    }
-
-    for (auto val : ans) {
-        cout << val << " ";
-    }
-
-    return 0;
 }
+

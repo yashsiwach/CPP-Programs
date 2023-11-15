@@ -1,47 +1,65 @@
 #include <bits/stdc++.h>
 using namespace std;
+#ifdef ONLINE_JUDGE
+#define DISABLE_STACK_SIZE_CHANGE
+#endif
+#ifndef DISABLE_STACK_SIZE_CHANGE
+#include <sys/resource.h>
+#endif
 typedef long long ll;
-#define MOD 1000000007
+const ll MOD = 1000000007;
 #define pb push_back
-#define ppb pop_back
 #define ff first
 #define ss second
-#define PI 3.141592653589793238462
-#define set_bits __builtin_popcountll
+#define nl "\n"
+unordered_map<int,vector<int>>adj;
+unordered_map<int,bool>visi;
+#define set_bits(x) __builtin_popcountll(x)
 #define all(x) (x).begin(), (x).end()
-#define debug(x) cerr<<x<<" ";
+#define debug(x) cerr<<#x<<" "<<x<<endl;
+#define loop(i,a,b) for(int i=(a);i<(b);i++)
+#define print(x) for(auto it:(x)) cout<<(it)<<" "; cout<<endl;
+#define showadj for (auto it : adj) { cout << it.ff << " ->"; for (auto i : it.ss) cout << i << " "; cout << endl; }
+template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
+template<typename T> T binpow(T base,T power,T mod){ ll ans=1;  base = base % mod;while(power){if(power&1) ans=(ans*base)%mod; base=((base*base)%mod); power>>=1;}return ans;}
 
+void insert(vector<int>&heap,int val)
+{
+    heap.pb(val);
+    int index=heap.size()-1;
+  
+    while(index>0)
+    {
+        int parent=(index-1)/2;
+        if(heap[index]<heap[parent])
+        {
+            swap(heap[index],heap[parent]);
+            index=parent;
+        }
+        else
+        {
+            break;
+        }
+    }
 
+}
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    ll n, m, c;
-    cin >> n >> m >> c;
-    vector<ll> v(n);
-    for (ll i = 0; i < n; i++)
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    #ifndef DISABLE_STACK_SIZE_CHANGE
+    rlimit rlim;
+    if (getrlimit(RLIMIT_STACK, &rlim) != 0) {return 1;}
+    rlim.rlim_cur = 1024 * 1024 * 1024;
+    if (setrlimit(RLIMIT_STACK, &rlim) != 0) {return 2;}
+    #endif
+vector<int>heap;
+    int n;
+    while(cin>>n)
     {
-        cin >> v[i];
+        insert(heap,n);
     }
-    vector<ll> key(m);
-    for (ll i = 0; i < m; i++)
-    {
-        cin >> key[i];
-    }
-    ll steps = (n - m) + 1;
-    ll i = 0;
+    
+    print(heap);
 
-    while (steps--)
-    {
-        vector<ll> temp = v; 
-        for (ll k = i; k < i + m; k++)
-        {
-            temp[k] = (v[k] + key[k - i]) % c; 
-        }
-        v = temp; 
-        i++;
-    }
-    for (auto i : v)
-        cout << i << " ";
-    cout << endl;
 }
+
