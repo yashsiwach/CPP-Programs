@@ -49,6 +49,25 @@ void del(vector<int>&heap,int val=45)
         }
     }
 }
+void heapify(vector<int>&heap,int index)
+{
+    
+    while(index<heap.size())
+    {
+        int n=heap.size()-1;
+        int left=2*index+1;
+        int right=2*index+2;
+        int large=index;
+        if(left<=n&&heap[left]>heap[index])large=left;
+        if(right<=n&&heap[right]>heap[index])large=right;
+        if(large!=index)
+        {
+            swap(heap[large],heap[index]);
+            index=large;
+        }
+        else break;
+    }
+}
 int main()
 {
     ios_base::sync_with_stdio(0);cin.tie(0);

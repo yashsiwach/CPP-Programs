@@ -23,26 +23,8 @@ unordered_map<int,bool>visi;
 template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
 template<typename T> T binpow(T base,T power,T mod){ ll ans=1;  base = base % mod;while(power){if(power&1) ans=(ans*base)%mod; base=((base*base)%mod); power>>=1;}return ans;}
 
-void insert(vector<int>&heap,int val)
-{
-    heap.pb(val);
-    int index=heap.size()-1;
-  
-    while(index>0)
-    {
-        int parent=(index-1)/2;
-        if(heap[index]<heap[parent])
-        {
-            swap(heap[index],heap[parent]);
-            index=parent;
-        }
-        else
-        {
-            break;
-        }
-    }
 
-}
+
 int main()
 {
     ios_base::sync_with_stdio(0);cin.tie(0);
@@ -52,14 +34,16 @@ int main()
     rlim.rlim_cur = 1024 * 1024 * 1024;
     if (setrlimit(RLIMIT_STACK, &rlim) != 0) {return 2;}
     #endif
-vector<int>heap;
-    int n;
-    while(cin>>n)
-    {
-        insert(heap,n);
-    }
-    
-    print(heap);
 
+    int n=120;
+    int ans=0;
+    while(n>0)
+    {
+        int temp=n%10;
+        n=n/10;
+        ans=ans+temp;
+
+    }
+    cout<<ans;
 }
 

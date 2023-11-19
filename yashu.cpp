@@ -23,62 +23,38 @@ unordered_map<int,bool>visi;
 template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
 template<typename T> T binpow(T base,T power,T mod){ ll ans=1;  base = base % mod;while(power){if(power&1) ans=(ans*base)%mod; base=((base*base)%mod); power>>=1;}return ans;}
 
-void insert(vector<int>&heap,int val)
-{
-    heap.pb(val);
-    int index=heap.size()-1;
-    while(index>0)
-    {
-        int parent=(index-1)/2;
-        if(heap[index]>heap[parent])
-        {
-            swap(heap[index],heap[parent]);
-            index=parent;
-        }
-        else break;
-    }
-}
-void del(vector<int>&heap,int val=45)
-{
-    int n=heap.size()-1;
-    int index=0;
-    for(int i=0;i<=n;i++)
-    {
-        if(heap[i]==val)
-        {
-            index=i;
-        }
-    }
-    heap[index]=heap[n];
-    heap.pop_back();
-    while(index<n)
-    {
-        int left=2*index+1;
-        int right=2*index+2;
-        int large=index;
-        if(left<n&&heap[left]>heap[index])large=left;
-        if(right<n&&heap[right]>heap[index])large=right;
-        if(large!=index)
-        {
-            swap(heap[large],heap[index]);
-            index=large;
-        }
-        else 
-        {
-            break;
-        }
-    }
-}
+
+
 int main()
 {
-    int n;
-    vector<int>heap;
-    while(cin>>n)
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    #ifndef DISABLE_STACK_SIZE_CHANGE
+    rlimit rlim;
+    if (getrlimit(RLIMIT_STACK, &rlim) != 0) {return 1;}
+    rlim.rlim_cur = 1024 * 1024 * 1024;
+    if (setrlimit(RLIMIT_STACK, &rlim) != 0) {return 2;}
+    #endif
+
+    int t;
+    cin>>t;
+    while(t--)
     {
-        insert(heap,n);
+        string s;
+        char c;
+        cin>>s>>c;
+        int flag=-1;
+        debug(s)
+        debug(c)
+        loop(i,0,s.length())
+        {
+            if(s[i]==c&&(i-0)%2==0&&(s.length()-1-i)%2==0)
+            {
+                flag=i;
+            }
+        }
+        if(flag!=-1)cout<<"YES"<<nl;
+        else if(flag==-1) cout<<"NO"<<nl;
     }
-    print(heap);
-    del(heap,50);
-    print(heap);
+    
 }
 
