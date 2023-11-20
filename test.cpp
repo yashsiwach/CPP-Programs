@@ -23,7 +23,23 @@ unordered_map<int,bool>visi;
 template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
 template<typename T> T binpow(T base,T power,T mod){ ll ans=1;  base = base % mod;while(power){if(power&1) ans=(ans*base)%mod; base=((base*base)%mod); power>>=1;}return ans;}
 
+//const int MOD = 1e9+7;
+ll solve(vector<ll>& v, ll sum,vector<ll>&dp) {
+    if (sum == 0) {
+        return 1;
+    }
+    if (sum < 0) {
+        return 0;  }
+    if(dp[sum]!=-1)return dp[sum];
 
+    ll ans = 0; 
+    for (ll i = 0; i < v.size(); i++) {
+        ans += solve(v, sum - v[i],dp);
+ans%=MOD;
+    }
+
+    return dp[sum]=ans%MOD;
+}
 
 int main()
 {
@@ -35,15 +51,11 @@ int main()
     if (setrlimit(RLIMIT_STACK, &rlim) != 0) {return 2;}
     #endif
 
-    int n=120;
-    int ans=0;
-    while(n>0)
-    {
-        int temp=n%10;
-        n=n/10;
-        ans=ans+temp;
-
-    }
-    cout<<ans;
+    ll n,sum;
+    cin>>n>>sum;
+    vector<ll>v(n);
+    vector<ll>dp(sum+1,-1);
+    for(ll i=0;i<n;i++)cin>>v[i];
+    cout<<solve(v,sum,dp);
+    
 }
-

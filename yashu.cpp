@@ -35,25 +35,21 @@ int main()
     if (setrlimit(RLIMIT_STACK, &rlim) != 0) {return 2;}
     #endif
 
-    int t;
-    cin>>t;
-    while(t--)
+    vector<int>v;
+    for(int i=1;i<1000;i++)
     {
-        string s;
-        char c;
-        cin>>s>>c;
-        int flag=-1;
-        debug(s)
-        debug(c)
-        loop(i,0,s.length())
+        string s=to_string(i);
+        for(auto it:s)
         {
-            if(s[i]==c&&(i-0)%2==0&&(s.length()-1-i)%2==0)
+            if(it!='4'&&it!='7')
             {
-                flag=i;
+                continue;
+            }
+            else
+            {
+            
             }
         }
-        if(flag!=-1)cout<<"YES"<<nl;
-        else if(flag==-1) cout<<"NO"<<nl;
     }
     
 }
