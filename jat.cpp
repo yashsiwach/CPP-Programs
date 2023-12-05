@@ -1,66 +1,34 @@
 #include <bits/stdc++.h>
+ 
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-const ll MOD = 1000000007;
-#define pb push_back
-#define ppb pop_back
-#define ff first
-#define ss second
-#define nl "\n"
-#define pie 3.141592653589793238462
-#define set_bits(x) __builtin_popcountll(x)
-#define all(x) (x).begin(), (x).end()
-#define debug(x) cerr<<#x<<" "<<x<<endl;
-#define loop(i,a,b) for(int i=(a);i<(b);i++)
-#define print(x) for(auto it:(x)) cout<<(it)<<" "; cout<<endl;
-#define showadj for (auto it : adj) { cout << it.ff << " ->"; for (auto i : it.ss) cout << i << " "; cout << endl; }
-template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
-template<typename T> T binpow(T base,T power,T mod){ ll ans=1;  base = base % mod;while(power){if(power&1) ans=(ans*base)%mod; base=((base*base)%mod); power>>=1;}return ans;}
-void bfs(int node,unordered_map<int,bool>&visi,unordered_map<int,vector<int>>&adj)
-{
-    queue<int>q;
-    visi[node]=true;
-    q.push(node);
-    while(!q.empty())
-    {
-      int fr=q.front();
-      q.pop();
-      cout<<fr<<" ";
-      for(auto nbr:adj[fr])
-      {
-        if(!visi[nbr])
-        {
-          q.push(nbr);
-          visi[nbr]=true;
+ 
+const int MAX = 200007;
+const int MOD = 1000000007;
+ 
+void solve() {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int mp[26];
+    for (int i = 0; i < 26; i++) {
+        mp[i] = -1;
+    }
+    for (int i = 0; i < n; i++) {
+        int curr = (s[i] - 'a');
+        if (mp[curr] == -1) {
+            mp[curr] = (i % 2);
         }
-      }
-    }
-    
-}
-int main()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    unordered_map<int,vector<int>>adj;
-    unordered_map<int,bool>visi;
-
-    int n,m;
-    cin>>n>>m;
-    cout<<n<<m;
-    loop(i,0,m)
-    {
-        int u,v;
-        cin>>u>>v;
-        adj[u].pb(v);
-        adj[v].pb(u);
-    }
-    for(int i=0;i<n-1;i++)
-    {
-        if(!visi[i])
-        {
-            bfs(i,visi,adj);
+        else {
+            if (mp[curr] != (i % 2)) {cout << "NO\n"; return;}
         }
     }
+    cout << "YES\n";
 }
-
+ 
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int tt; cin >> tt; for (int i = 1; i <= tt; i++) {solve();}
+    // solve();
+}
