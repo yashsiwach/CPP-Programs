@@ -1,0 +1,4 @@
+1.sum of first n even numbers =  n*(n+1);
+2.sum of first n odd numbers =   n*n;
+3.number of odd number till n =  (n+1)/2;
+4.number of even numbers till n =  n/2;

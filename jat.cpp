@@ -54,17 +54,5 @@ int main()
     if (setrlimit(RLIMIT_STACK, &rlim) != 0) { return 2; }
 #endif
 
-#ifndef ONLINE_JUDGE
-    freopen("Input.txt", "r",stdin);
-    freopen("Output.txt", "w",stdout);
-    freopen("Error.txt", "w",stderr);
-#endif
-
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-    }
+    cout<<(5&5)<<nl;
 }
