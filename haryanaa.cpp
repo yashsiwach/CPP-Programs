@@ -1,28 +1,61 @@
-// C++ program to find sum between two indexes
-// when there is no update.
 #include <bits/stdc++.h>
 using namespace std;
+#ifdef ONLINE_JUDGE
+#define DISABLE_STACK_SIZE_CHANGE
+#endif
+#ifndef DISABLE_STACK_SIZE_CHANGE
+#include <sys/resource.h>
+#endif
+typedef long long ll;
+const ll MOD = 1000000007;
+#define pb push_back
+#define sz(x) (ll)x.size()
+#define ff first
+#define ss second
+#define nl "\n"
+#define allr(v) (v).rbegin(),(v).rend()
+unordered_map<int, vector<int>> adj;
+unordered_map<int, bool> visi;
+#define set_bits(x) __builtin_popcountll(x)
+#define ceil(x,y) ceil(double(x)/y)
+#define floor(x,y) floor(double(x)/y)
+#define all(x) (x).begin(), (x).end()
+#define debug(x) cerr<<#x<<" "<<x<<endl;
+#define loop(i,a,b) for(int i=(a);i<(b);i++)
+#define print(x) for(auto it:(x)) cout<<(it)<<" "; cout<<endl;
+#define showadj for (auto it : adj) { cout << it.ff << " ->"; for (auto i : it.ss) cout << i << " "; cout << endl; }
 
-// Function to compute sum in given range
-int rangeSum(int arr[], int n, int i, int j) {
-    int sum = 0;
+template <typename T>
+T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
 
-    // Compute sum from i to j
-    for (int k = i; k <= j; k++) {
-        sum += arr[k];
+template <typename T>
+T binpow(T base, T power, T mod)
+{
+    ll ans = 1;
+    base = base % mod;
+    while (power)
+    {
+        if (power & 1) ans = (ans * base) % mod;
+        base = ((base * base) % mod);
+        power >>= 1;
     }
-
-    return sum;
+    return ans;
 }
 
-// Driver code
-int main() {
-    int arr[] = { 1, 2, 3, 4, 5 };
-    int n = sizeof(arr) / sizeof(arr[0]);
 
-    // Function call with queries
-    cout << rangeSum(arr, n, 1, 3) << endl;
-    cout << rangeSum(arr, n, 2, 4) << endl;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+#ifndef DISABLE_STACK_SIZE_CHANGE
+    rlimit rlim;
+    if (getrlimit(RLIMIT_STACK, &rlim) != 0) { return 1; }
+    rlim.rlim_cur = 1024 * 1024 * 1024;
+    if (setrlimit(RLIMIT_STACK, &rlim) != 0) { return 2; }
+#endif
 
-    return 0;
+    
+        ll a,b;cin>>a>>b;
+        cout<<a%b<<nl;
+    
 }

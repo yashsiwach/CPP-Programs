@@ -2,3 +2,5 @@
 2.sum of first n odd numbers =   n*n;
 3.number of odd number till n =  (n+1)/2;
 4.number of even numbers till n =  n/2;
+5. a/b =c/d ---> a*d==c*b;
+6. the number of divisors are odd of a number then it is perfect square else not;
